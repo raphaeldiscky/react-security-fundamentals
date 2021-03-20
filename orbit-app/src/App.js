@@ -35,6 +35,22 @@ const AuthenticatedRoute = ({ children, ...rest }) => {
   )
 }
 
+const AdminRoute = ({ children, ...rest }) => {
+  const authContext = useContext(AuthContext)
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        authContext.isAuthenticated() && authContext.isAdmin() ? (
+          <AppShell>{children}</AppShell>
+        ) : (
+          <Redirect to='/' />
+        )
+      }
+    />
+  )
+}
+
 const AppRoutes = () => {
   return (
     <Switch>
@@ -50,18 +66,18 @@ const AppRoutes = () => {
       <AuthenticatedRoute path='/dashboard'>
         <Dashboard />
       </AuthenticatedRoute>
-      <AuthenticatedRoute path='/inventory'>
+      <AdminRoute path='/inventory'>
         <Inventory />
-      </AuthenticatedRoute>
+      </AdminRoute>
       <AuthenticatedRoute path='/account'>
         <Account />
       </AuthenticatedRoute>
       <AuthenticatedRoute path='/settings'>
         <Settings />
       </AuthenticatedRoute>
-      <AuthenticatedRoute path='/users'>
+      <AdminRoute path='/users'>
         <Users />
-      </AuthenticatedRoute>
+      </AdminRoute>
       <Route path='*'>
         <FourOFour />
       </Route>
