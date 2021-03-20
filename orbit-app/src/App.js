@@ -66,9 +66,9 @@ const AppRoutes = () => {
       <AuthenticatedRoute path='/dashboard'>
         <Dashboard />
       </AuthenticatedRoute>
-      <AdminRoute path='/inventory'>
+      <AuthenticatedRoute path='/inventory'>
         <Inventory />
-      </AdminRoute>
+      </AuthenticatedRoute>
       <AuthenticatedRoute path='/account'>
         <Account />
       </AuthenticatedRoute>
