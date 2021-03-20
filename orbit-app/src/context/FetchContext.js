@@ -13,7 +13,11 @@ const FetchProvider = ({ children }) => {
 
   authAxios.interceptors.request.use(
     (config) => {
-      config.headers.Authorization = `Bearer ${authContext.authState.token}`
+      const { origin } = new URL(config.baseURL)
+      const allowedOrigins = [process.env.REACT_APP_URL]
+      if (allowedOrigins.includes(origin)) {
+        config.headers.Authorization = `Bearer ${authContext.authState.token}`
+      }
       return config
     },
     (error) => {
