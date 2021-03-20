@@ -1,15 +1,10 @@
-import React from 'react';
-import { useField } from 'formik';
-import FormError from './../components/common/FormError';
-import Input from './../components/common/Input';
+import React from 'react'
+import { useField } from 'formik'
+import FormError from './../components/common/FormError'
+import Input from './../components/common/Input'
 
-const FormInput = ({
-  ariaLabel,
-  name,
-  type,
-  placeholder
-}) => {
-  const [field, meta] = useField(name);
+const FormInput = ({ ariaLabel, name, type, placeholder }) => {
+  const [field, meta] = useField(name)
   return (
     <>
       <Input
@@ -23,7 +18,7 @@ const FormInput = ({
         <FormError text={meta.error}></FormError>
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default FormInput;
+export default FormInput

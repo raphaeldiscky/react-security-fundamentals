@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-const GradientBar = () => <div className="bg-gradient h-1"></div>;
+const GradientBar = () => <div className='bg-gradient h-1'></div>
 
-export default GradientBar;
+export default GradientBar

@@ -1,7 +1,7 @@
-import React, { createContext } from 'react';
+import React, { createContext } from 'react'
 
-const AuthContext = createContext();
-const { Provider } = AuthContext;
+const AuthContext = createContext()
+const { Provider } = AuthContext
 
 const AuthProvider = ({ children }) => {
   return (
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
     >
       {children}
     </Provider>
-  );
-};
+  )
+}
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider }

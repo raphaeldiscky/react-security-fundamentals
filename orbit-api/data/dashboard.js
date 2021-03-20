@@ -16,4 +16,4 @@ module.exports = {
     { date: 'Nov 2019', amount: 345 },
     { date: 'Dec 2019', amount: 782 }
   ]
-};
+}
