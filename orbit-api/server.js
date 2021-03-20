@@ -138,7 +138,8 @@ app.use(attachUser)
 const checkJwt = jwt({
   secret: process.env.JWT_SECRET,
   issuer: 'api.orbit',
-  audience: 'api.orbit'
+  audience: 'api.orbit',
+  algorithms: ['HS256']
 })
 
 const requireAdmin = (req, res, next) => {
