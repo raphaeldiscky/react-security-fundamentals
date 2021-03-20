@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const inventoryItemModel = new Schema({
-  user: { type: mongoose.Types.ObjectId, required: false },
+  user: { type: mongoose.Types.ObjectId, required: true }, // set to true, so we need user key to show id
   name: { type: String, required: true },
   itemNumber: { type: String, required: true },
   unitPrice: { type: Number, required: true },
