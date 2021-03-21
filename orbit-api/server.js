@@ -6,6 +6,7 @@ const jwtDecode = require('jwt-decode')
 const mongoose = require('mongoose')
 const jwt = require('express-jwt')
 const cookieParser = require('cookie-parser')
+const csrf = require('csurf')
 
 const dashboardData = require('./data/dashboard')
 const User = require('./data/User')
@@ -14,6 +15,9 @@ const InventoryItem = require('./data/InventoryItem')
 const { createToken, hashPassword, verifyPassword } = require('./util')
 
 const app = express()
+const csrfProtection = csrf({
+  cookie: true
+})
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -151,6 +155,12 @@ const checkJwt = jwt({
   audience: 'api.orbit',
   algorithms: ['HS256'],
   getToken: (req) => req.cookies.token
+})
+
+app.use(csrfProtection)
+
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() })
 })
 
 const requireAdmin = (req, res, next) => {
